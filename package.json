@@ -1,0 +1,9 @@
+{
+  "name": "node_keybd_event",
+  "version": "0.0.1",
+  "description": "keybd_event c++ extension",
+  "main": "index.js",
+  "author": {
+    "name": "shyykoserhiy"
+  }
+}
