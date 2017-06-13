@@ -16,6 +16,7 @@ platform:
 
 install:
 - ps: Install-Product node $env:nodejs_version $env:platform
+- ps: $env:Path += ";$(pwd)\node_modules\.bin";
 - npm install -g node-gyp
 - ps: >
     if($env:APPVEYOR_REPO_COMMIT_MESSAGE.ToLower().StartsWith('')) { 
