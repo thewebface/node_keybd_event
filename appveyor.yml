@@ -17,7 +17,15 @@ platform:
 install:
 - ps: Install-Product node $env:nodejs_version $env:platform
 - npm install -g yarn
-
+- ps: >
+    if($env:APPVEYOR_REPO_COMMIT_MESSAGE.ToLower().StartsWith('release ')) { 
+      $env:publish_binary = 1;
+      "We're going to publish a library" | Write-Host
+    } else {
+      "We're NOT going to publish a library" | Write-Host
+      $env:publish_binary = 0;
+    }
+    true;
 
 - ps: >
     npm config set progress false
