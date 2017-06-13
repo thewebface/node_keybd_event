@@ -1,6 +1,4 @@
 os: unstable
-on:
-    appveyor_repo_tag: true
 environment:
   NODE_PRE_GYP_GITHUB_TOKEN:
     secure: kczaTxXx3hTb1D+tdWrdCT0f/8uAchuWQKSHrhU+/NXOHe4vvz+ebAGwKqQaN2eG
@@ -21,7 +19,7 @@ install:
 - ps: $env:Path += ";$(pwd)\node_modules\.bin";
 - npm install -g node-gyp
 - ps: >
-    if(($env:APPVEYOR_REPO_COMMIT_MESSAGE.ToLower().StartsWith('release ')) -And ("$(git describe --tags --always HEAD)" -eq $env:appveyor_repo_tag_name)) { 
+    if(($env:appveyor_repo_tag -match "true") -And ($env:APPVEYOR_REPO_COMMIT_MESSAGE.ToLower().StartsWith('release ')) -And ("$(git describe --tags --always HEAD)" -eq $env:appveyor_repo_tag_name)) { 
       $env:publish_binary = 1;
       "We're going to publish a library" | Write-Host
     } else {
