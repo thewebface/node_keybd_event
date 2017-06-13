@@ -21,7 +21,7 @@ install:
 - ps: $env:Path += ";$(pwd)\node_modules\.bin";
 - npm install -g node-gyp
 - ps: >
-    if($env:APPVEYOR_REPO_COMMIT_MESSAGE.ToLower().StartsWith('release ')) { 
+    if(($env:APPVEYOR_REPO_COMMIT_MESSAGE.ToLower().StartsWith('release ')) -And ("$(git describe --tags --always HEAD)" -eq $env:appveyor_repo_tag_name)) { 
       $env:publish_binary = 1;
       "We're going to publish a library" | Write-Host
     } else {
