@@ -17,7 +17,7 @@
   "binary": {
     "module_name": "node_keybd_event",
     "module_path": "build/{configuration}/",
-    "host": "https://github.com/ShyykoSerhiy/node_keybd_eventreleases/download/0.0.1"
+    "host": "https://github.com/ShyykoSerhiy/node_keybd_event/releases/download/0.0.1"
   },
   "dependencies": {
     "node-pre-gyp": "^0.6.36"
