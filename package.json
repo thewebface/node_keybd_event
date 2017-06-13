@@ -6,7 +6,10 @@
   "os":[
     "win32"
   ],
-  "repository": "https://github.com/ShyykoSerhiy/node_keybd_event.git",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/ShyykoSerhiy/node_keybd_event.git"
+  },
   "author": "shyyko.serhiy@gmail.com", 
   "bundledDependencies": [
     "node-pre-gyp"
