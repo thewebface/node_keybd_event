@@ -1,0 +1,52 @@
+os: unstable
+environment:
+  NODE_PRE_GYP_GITHUB_TOKEN:
+    secure: kczaTxXx3hTb1D+tdWrdCT0f/8uAchuWQKSHrhU+/NXOHe4vvz+ebAGwKqQaN2eG
+
+  matrix:
+  - nodejs_version: "4"
+  - nodejs_version: "6"
+  - nodejs_version: "7"
+  - electron_version: "1.4.12"
+    nodejs_version: "6"
+
+platform:
+- x86
+- x64
+
+install:
+- ps: Install-Product node $env:nodejs_version $env:platform
+- npm install -g yarn
+
+
+- ps: >
+    npm config set progress false
+    npm config set spin false
+
+# Setup Electron variables
+- ps: >
+    if ($env:electron_version) {
+      "Building for electron, setup variables" | Write-Host
+      $env:npm_config_target = $env:electron_version
+      $env:npm_config_disturl = "https://atom.io/download/atom-shell"
+      $env:npm_config_runtime = "electron"
+      if ($env:plaftorm -eq "x86") {
+        $env:npm_config_arch = "ia32"
+      } else {
+        $env:npm_config_arch = "x64"
+      }
+      "Install electron" | Write-Host
+      npm install -g electron@$env:electron_version
+    }
+    true;
+
+build_script:
+- yarn
+- IF %PUBLISH_BINARY% == 1 (node-pre-gyp package 2>&1)
+- IF %PUBLISH_BINARY% == 1 (node-pre-gyp-github publish --release 2>&1)
+- IF %PUBLISH_BINARY% == 1 (node-pre-gyp clean)
+
+deploy: OFF
+
+matrix:
+  fast_finish: true
