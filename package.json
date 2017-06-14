@@ -11,6 +11,9 @@
     "url": "git://github.com/ShyykoSerhiy/node_keybd_event.git"
   },
   "author": "shyyko.serhiy@gmail.com", 
+  "scripts": {
+    "install": "node-pre-gyp install --fallback-to-build"
+  },
   "bundledDependencies": [
     "node-pre-gyp"
   ],
