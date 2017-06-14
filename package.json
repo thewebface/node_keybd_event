@@ -1,6 +1,6 @@
 {
   "name": "node_keybd_event",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "keybd_event c++ extension",
   "main": "index.js",
   "os":[
@@ -17,7 +17,7 @@
   "binary": {
     "module_name": "node_keybd_event",
     "module_path": "build/{configuration}/",
-    "host": "https://github.com/ShyykoSerhiy/node_keybd_event/releases/download/0.0.1"
+    "host": "https://github.com/ShyykoSerhiy/node_keybd_event/releases/download/0.0.3"
   },
   "dependencies": {
     "node-pre-gyp": "^0.6.36"
