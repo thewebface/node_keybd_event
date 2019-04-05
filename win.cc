@@ -34,7 +34,7 @@ namespace win {
 		//Controls various aspects of function operation.This parameter can be one or more of the following values.
 		DWORD dwFlags = args[2]->Uint32Value();
 		//An additional value associated with the key stroke. 
-		ULONG_PTR dwExtraInfo = args[2]->Uint32Value();
+		ULONG_PTR dwExtraInfo = args[3]->Uint32Value();
 
 		keybd_event(bVk, bScan, dwFlags, dwExtraInfo);
 	}
